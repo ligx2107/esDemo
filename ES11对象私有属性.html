@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES11对象私有属性</title>
+</head>
+<body>
+    <script>
+        class Person {
+            //公有属性
+            name;
+            //私有属性
+            #age;
+            #weight;
+            constructor(name, age, weight) {
+                this.name = name;
+                this.#age = age;
+                this.#weight = weight;  
+            };
+        }
+
+        const girl = new Person("效力", 18, '45KG');
+        console.log(girl);
+
+        console.log(girl.name);
+        // console.log(girl.#age);
+    </script>
+</body>
+</html>

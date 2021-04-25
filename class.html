@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class类</title>
+</head>
+<body>
+    <script>
+        //ES6引入了class这个概念，作为对象的模板，通过class关键字可以定义类
+        //知识点：class声明类，constructor定义构造函数初始化，extends继承类
+        //super调用父类构造函数，static定义静态方法和属性，父类方法可以重写
+        
+        //ES5定义对象
+        function Phone(brand, price){
+            this.brand = brand;
+            this.price = price;
+        }
+
+        //添加方法
+        Phone.prototype.call = function(){
+            console.log('我可以打电话');
+        }
+
+        let p1 = new Phone('华为',1000);
+        console.log(p1);
+        p1.call();
+
+        //ES6 class实现
+        class Phone1 {
+            // 构造方法，名字不能改
+            constructor(brand, price){
+                this.brand = brand;
+                this.price = price;
+            }
+
+            //方法必须使用下列格式定义
+            call(){
+                console.log('可以打电话');
+            }
+
+            static name = 'aaa';
+        }
+        let p2 = new Phone1('Apple', 6000);
+        console.log(p2);
+        p2.call();
+
+        //静态变量，属于类而不属于具体对象
+        console.log(Phone1.name);
+        console.log(p2.name);
+
+        //extends实现继承
+        class Xiaomi extends Phone1 {
+            constructor(brand, price, color){
+                //调用父类构造方法
+                super(brand, price);
+                this.color = color;
+            }
+
+            //添加方法
+            playGame(){
+                console.log("玩游戏!");
+            }
+
+            //子类重写父类方法
+            call(){
+                console.log('可以视频通话');
+            }
+
+            //get set
+            // get price(){
+            //     console.log('get被调用');
+            // }
+
+            // set price(newPrice){
+            //     console.log('set被调用');
+            // }
+        }
+        const xiaomi = new Xiaomi('小米', 799, '黑色');
+        console.log(xiaomi);
+        xiaomi.call();
+
+        console.log(xiaomi.price);
+    </script>
+</body>
+</html>

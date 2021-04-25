@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义迭代器</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const o1 = {
+            name:"test",
+            sts:[
+                'aaa',
+                'bbb',
+                'ccc'
+            ],
+            [Symbol.iterator](){
+                let index = 0;
+                let _this = this;
+                return {
+                    next:function(){
+                        if(index < _this.sts.length){
+                            const res = {value: _this.sts[index], done: false};
+                            index++;
+                            return res;
+                        }else{
+                            return {value: undefined, done: true};
+                        }
+                    }
+                };
+            }
+        };
+        for(let v of o1){
+            console.log(v);
+        }
+    </script>
+</body>
+</html>

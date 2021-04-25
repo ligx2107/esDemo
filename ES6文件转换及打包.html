@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块打包</title>
+</head>
+<body>
+    <!--
+        1.安装工具，babel-cli, babel-preset-env, browserify(打包工具,webpack)
+        1.1 初始化，npm init --yes
+        1.2 安装babel-cli, babel-preset-env, browserify  npm i babel-cli babel-preset-env browserify -D
+
+        2.代码转换, npx babel src/js/modules -d dist/js/modules  打包失败，原因待查
+        3.打包 npx browserify dist/js/modules/app.js -o dist/bundle.js
+    -->
+    <script src="./dist/js/modules/app.js">
+        
+    </script>
+</body>
+</html>

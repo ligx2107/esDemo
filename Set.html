@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set类型</title>
+</head>
+<body>
+    <script>
+        //Set是一种集合类型，保存元素不重复
+        //Set具有Symbol.iterator属性，可以使用for...of遍历，及...扩展运算符
+        // 创建一个Set
+        const s = new Set();
+        console.log(s);
+        const s1 = new Set([1,2,3,4,5]);
+        console.log(s1);
+        s1.add(6);
+        console.log(s1);
+        s1.delete(1);
+        console.log(s1);
+        console.log(s1.has(2));
+
+        //Set其他应用
+        //1.数组去重
+        let arr = [1,2,3,4,5,1,2,4];
+        console.log([...new Set(arr)]);
+        //2.数组交集
+        let arr2 = [3,4,5,3];
+        let res = [...new Set(arr)].filter(item => 
+            new Set(arr2).has(item)
+        );
+        console.log(res);
+
+        //3.求并集
+        let union = [...new Set([...arr, ...arr2])];
+        console.log(union);
+    </script>
+</body>
+</html>

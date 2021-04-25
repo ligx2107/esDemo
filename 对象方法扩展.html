@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象方法扩展</title>
+</head>
+<body>
+    <script>
+        //1.Object.is判断两个值是否相等
+        console.log(Object.is(111.11,111.11));
+
+        //2.Object.assign 对象的合并
+        const c1 = {
+            host:111,
+            port:2200
+        };
+        const c2 = {
+            host:222,
+            port:3300
+        };
+        console.log(c1);
+        Object.assign(c1, c2);
+        console.log(c1);
+        //3.Object.setPrototypeOf 设置原型对象
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES8对象扩展方法</title>
+</head>
+<body>
+    <script>
+        //声明对象
+        const obj = {
+            name: 'test',
+            age:18
+        };
+        //获取对象所有key
+        console.log(Object.keys(obj));
+        //获取对象所有value
+        console.log(Object.values(obj));
+        //获取对象所有键值对
+        console.log(Object.entries(obj));
+        //利用对象所有属性键值对创建Map
+        const m = new Map(Object.entries(obj));
+        console.log(m);
+        console.log(m.get('name'));
+        //获取对象属性的描述对象
+        console.log(Object.getOwnPropertyDescriptors(obj));
+    </script>
+</body>
+</html>

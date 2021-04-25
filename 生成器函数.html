@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //生成器是一个特殊的函数, 异步编程, 
+        //yield 函数代码的分隔符
+        function *gen(){
+            console.log(1111);
+            yield 'aaaa';
+            console.log(2222);
+            yield 'bbbb';
+            console.log(3333);
+            yield 'cccc';
+            console.log(4444);
+        }
+        
+        //获取迭代器对象
+        let iter = gen();
+        console.log(iter.next());
+        console.log(iter.next());
+        console.log(iter.next());
+        console.log(iter.next());
+    </script>
+</body>
+</html>

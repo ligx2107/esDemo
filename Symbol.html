@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //Symbol，一种新的数据类型，表示独一无二的值，
+        //Symbol的值是唯一的，不能与其他类型运算，定义的对象属性不能用for...in循环
+        //Symbol的创建，两种方式
+        const s1 = Symbol('aa');
+        const s2 = Symbol('aa');
+        console.log(s1 === s2);
+
+        const s3 = Symbol.for('aaa');
+        const s4 = Symbol.for('aaa');
+        console.log(s3 === s4);
+
+        //给对象添加Symbol类型属性
+        let o1 = {
+            name:'ligx',
+            age:16,
+            up:function(){
+                console.log("up function");
+            }
+        };
+        console.log(o1);
+        o1[Symbol('down')] = function(){
+            console.log('Symbol down function');
+        }
+
+        //Symbol内置值
+        class Person{
+            static [Symbol.hasInstance](param){
+                console.log("check...");
+                return true;
+            }
+        }
+        let o = {};
+        console.log(o instanceof Person);
+
+        const ar1 = [1,2,3];
+        const ar2 = [4,5,6];
+        console.log(ar1.concat(ar2));
+        ar2[Symbol.isConcatSpreadable] = false;
+        console.log(ar1.concat(ar2));
+
+        let iterator = ar1[Symbol.iterator]();
+        console.log(iterator);
+    </script>
+</body>
+</html>

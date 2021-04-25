@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const ta = ['aa','bb','cc'];
+			function t(){
+				//ta作为一个整体, Arguments [["aa", "bb", "cc"]] (1)
+				console.log(arguments);
+			}
+			t(ta);
+
+			//扩展运算符, ta数组 => 'aa','bb','cc'
+			//Arguments ["aa", "bb", "cc"] (3)
+			t(...ta);
+
+			//扩展运算符应用
+			//1.数组合并
+			const ar1 = ['a','b'];
+			const ar2 = ['c','d'];
+			// es5
+			const h1 = ar1.concat(ar2);
+			// es6
+			const h2 = [...ar1, ...ar2];
+			console.log(h1);
+			console.log(h2);
+
+			//2.数组克隆
+			const k1 = [...ar1];
+			console.log(k1);
+			//3.伪数组转换为真正数组
+			const divs = document.querySelectorAll('div');
+			console.log([...divs]);
+    </script>
+</body>
+</html>

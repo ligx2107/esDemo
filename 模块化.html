@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块化</title>
+</head>
+<body>
+    <script type="module">
+        //1. 通用导入方式
+        //import 引入分别暴露指定模块
+        import * as m1 from './src/js/modules/module1.js';
+        m1.f1();
+
+        //import 引入统一暴露指定模块
+        import * as m2 from './src/js/modules/module2.js';
+        m2.f1();
+
+        //import 引入默认暴露指定模块
+        import * as m3 from './src/js/modules/module3.js';
+        console.log(m3);
+        m3.default.f();
+
+        console.log('------------解构赋值方式导入-------------------');
+
+        //2.解构赋值形式导入
+        import {v1 as v, f1} from './src/js/modules/module1.js';
+        f1();
+        console.log(v);
+        import {default as md} from './src/js/modules/module3.js';
+        console.log(md);
+        md.f();
+
+        console.log('------------针对默认暴露的简便形式-------------------');
+
+        //3.针对默认暴露的简便形式
+        import md1 from './src/js/modules/module3.js';
+        md1.f();
+        
+    </script>
+
+    <script src="./src/js/modules/app.js" type="module"></script>
+</body>
+</html>

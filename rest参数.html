@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest参数</title>
+</head>
+<body>
+    <script lang="text/javascript">
+        function f(){
+            console.log(arguments);
+        }
+        f('1','2','3');
+
+        //rest参数，多个参数时，rest参数只能放在最后
+        function re(...args){
+            //rest参数已数组方式接收函数入参，可使用的数组的一些方法对参数进行处理
+            //filter, some, every, map等
+            console.log(args);
+            console.log(args.filter(v => v % 2 === 0));
+        }
+        re(1,2,3,4,5,6,7,8,10,11,12);
+    </script>
+</body>
+</html>

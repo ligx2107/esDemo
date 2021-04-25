@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <script>
+        //Promise是es6引入的异步编程的新解决方案，用来封装异步操作并可获得其成功或失败的结果
+        let p = new Promise(function(resolve, reject){
+            setTimeout(() => {
+                //调用resolve, 异步操作自行成功
+                // resolve("执行成功");
+
+                //调用reject，异步执行失败
+                reject("执行失败");
+            }, 1000);
+        });
+
+        // 根据Promise所封装的异步操作执行结果，选择执行then方法的两个回调函数
+        p.then(function(result){
+            console.log(result);
+        }, function(reason){
+            console.log(reason);
+        })
+    </script>
+</body>
+</html>

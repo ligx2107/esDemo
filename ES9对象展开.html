@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES9对象展开</title>
+</head>
+<body>
+    <script>
+        //ES9中为对象提供了像数组一样的rest参数和扩展运算符
+        function connect({host, port, ...user}){
+            console.log(host);
+            console.log(port);
+            console.log(user);
+        }
+        connect({
+            host:'test.com',
+            port:3306,
+            name:'root',
+            password:'root'
+        });
+
+        //对象扩展运算符
+        const one = {
+            a:'a'
+        };
+        const two = {
+            b:'b'
+        };
+        const three = {
+            c:'c'
+        };
+        const all = {...one, ...two, ...three};
+        console.log(all);
+
+        //正则表达式，命名捕获组
+        let str = '<a href="www.baidu.com">百度</a>';
+        const reg = /<a href="(?<url>.*)">(?<name>.*)<\/a>/;
+        const res = reg.exec(str);
+        console.log(res);
+        console.log(res.groups.url);
+        console.log(res.groups.name);
+
+        //正砸表达式，正反向断言
+
+    </script>
+</body>
+</html>
