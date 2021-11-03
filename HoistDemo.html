@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoistDemo</title>
+</head>
+<body>
+    <script>
+        /**
+         * 在JS执行中过程的词法分析阶段，解释器会悄悄的将变量和函数的声明提升到方法体的顶部
+         * 1. 变量提升：只有声明会被提升到当前作用域的顶端，初始化即赋值部分不会提升
+         * 2. 函数提升：函数声明和初始化都会提升，函数表达式不会提升
+         * 3. 优先级：函数提升优先于变量提升
+         * */
+        
+        /**
+         * 以下程序解析后为：
+         * var num;
+         * console.log(num); //undefined
+         * num = 6;
+         * */
+        console.log(num); //undefined
+        var num = 6;
+
+        /**
+         * 函数执行上下文中，变量声明同样会提升到函数作用域的顶部
+         * */
+        var v1 = 3;
+        function hositVar(){
+            var v1 = v1 || 5;
+            console.log(v1); //5
+        }
+        hositVar();
+        console.log(v1)
+
+
+        /**
+         * 
+         * */
+        function hoistFun() {
+            fun(); // 2
+            var fun = function() {
+                console.log(1);
+            };
+            fun(); // 1
+            function fun() {
+                console.log(2);
+            }
+            fun(); // 1
+         }
+
+         hoistFun();
+    </script>
+</body>
+</html>
