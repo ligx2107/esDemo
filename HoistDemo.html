@@ -37,7 +37,19 @@
 
 
         /**
-         * 
+         * 函数解析后类似：
+         * function hoistFun(){
+         *     //函数声明整体提升到函数作用域顶部
+         *     function fun(){
+         *        console.log(2);
+         *     }
+         *     fun(); //2
+         *     fun = function(){
+         *         console.log(1);
+         *     }
+         *     fun(); //1
+         *     fun(); //1
+         * }
          * */
         function hoistFun() {
             fun(); // 2
@@ -50,8 +62,20 @@
             }
             fun(); // 1
          }
-
          hoistFun();
+
+         /**
+          * ES6 let和const声明变量
+          * let声明的变量拥有块级作用域，即let声明的变量的作用域只是外层块而不是整个外层函数
+          * let声明的全局变量不是全局对象的一个属性，即不可使用window.属性名进行访问
+          * let声明重名变量会报错
+          * const声明变量为一个常量，在声明时必须进行赋值且后续不可修改(注意基本数据类型和对象类型的区别)，否则会报错
+          * */
+         let l1 = "aaa";
+         console.log(window.l1); // undefined
+
+         const c1 = 1;
+        //  c1 = 2; // Uncaught TypeError: Assignment to constant variable.
     </script>
 </body>
 </html>
