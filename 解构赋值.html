@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //ES6允许按照一定的模式，从数组和对象中提取值用来对变量进行赋值
+
+        //1. 数组解构赋值，按照数组元素索引顺序为变量赋值，未被赋值的变量值为undefined，同时可以为变量设置默认值
+        const ar1 = [1,2,3];
+        const [a,b,c,d,e=5] = ar1;
+        console.log(a,b,c,d,e);
+
+        //1.1 嵌套数组解构
+        const ar2 = [1,2,[3,4],5];
+        const [a1,b1,[c1]] = ar2;
+        console.log(a1,b1,c1);
+
+        //2. 对象解构赋值，变量名必须与对象属性名相同，解析失败则变量值为undefined，同时也可以为变量设置默认值
+        let obj1 = {name:'lisi',age:18};
+        let {name,sex='M',age} = obj1;
+        console.log(name, sex,age);
+
+        //3. 字符串解构
+        let str1 = "hello";
+        let [s1,s2,s3] = str1;
+        console.log(`s1:${s1}, s2:${s2}, s3:${s3}`);
+
+        //4. 函数参数解构
+        function t1({name, age, sex='FM'}){
+            console.log(`name:${name} --> age:${age} --> sex:${sex}`);
+        }
+        t1({name:'zhangsan',age:20});
+    </script>
+</body>
+</html>
