@@ -27,7 +27,9 @@
         })
 
         /**
-         * EventLoop: 调用栈，微任务队列，宏任务队列的调用优先级问题
+         * EventLoop: 调用栈，微任务(Promise、nodejs的process.nextTick等)队列，宏任务(主代码块、setTimeout、setInterval等)队列的调用优先级问题
+         * javaScript单线程指的是浏览器中负责解释和执行javaScript代码的只有一个线程，即：javaScript引擎线程
+         * 但整个浏览器的渲染进程是提供多线程的，javaScript引擎线程、事件触发线程、定时器触发线程、异步http请求线程、GUI渲染线程
          * 输出结果：
          * 1. call stack: info
          * 2. value: 11
