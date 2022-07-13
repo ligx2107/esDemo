@@ -9,15 +9,26 @@
 <body>
     <script type="text/javascript">
         //Symbol，一种新的数据类型，表示独一无二的值，
-        //Symbol的值是唯一的，不能与其他类型运算，定义的对象属性不能用for...in循环
+        //Symbol的值是唯一的，不能与其他类型运算
         //Symbol的创建，两种方式
-        const s1 = Symbol('aa');
+        const s1 = Symbol('aa'); // 'aa'为Symbol的描述
         const s2 = Symbol('aa');
-        console.log(s1 === s2);
+        console.log(s1 === s2); // false
 
+        // Symbol.for(), 接收一个字符串为参数，在创建Symbol之前，先判断是否存在以该参数为描述符的Symbol值，如果存在则直接返回，不存在则创建Symbol并注册到全局
+        // Symbol.for()与Symbol()都可以创建Symbol值，区别在于前者创建后会注册到全局供搜索，而后者不会
         const s3 = Symbol.for('aaa');
         const s4 = Symbol.for('aaa');
-        console.log(s3 === s4);
+        const s5 = Symbol.for('aa');
+        console.log(s3 === s4); // true
+        console.log('s2 === s5', s2 === s5); // false
+
+        // Symbol.keyFor()返回已注册到全局的Symbol值的描述符
+        console.log(Symbol.keyFor(s3)); // aaa
+        console.log(Symbol.keyFor(s2)); // undefined，s2并未注册到全局，所以返回undefined
+
+        // 获取Symbol描述
+        console.log('description: ',s4.description);
 
         //给对象添加Symbol类型属性
         let o1 = {
@@ -50,6 +61,28 @@
 
         let iterator = ar1[Symbol.iterator]();
         console.log(iterator);
+
+        // Symbol作为对象的属性名，不能使用.运算符
+        const sb1 = Symbol('sb1');
+        const obj1 = {};
+        // obj1.sb1 = 'hello'; // 此时只是在对象obj1中增加了属性sb1，而不是Symbol类型的属性，.运算符后面总是字符串
+        obj1[sb1] = 'hello';
+        console.log('Symbol属性值为: ',obj1[sb1]);
+
+        // Symbol作为属性名，遍历对象时该属性不会出现在for...in循环中，也不会被Object.keys() Object.getOwnPropertyNames() JSON.stringify()返回
+        const obj2 = {
+            [Symbol()]: 'hello',
+            name: 'Tom',
+            age: 11
+        };
+        for(let v in obj2){
+            console.log(`${v}:${obj2[v]}`);
+        }
+
+        console.log(Object.getOwnPropertyNames(obj2)); // name, age
+        console.log(Object.keys(obj2)); // name, age
+        console.log(JSON.stringify(obj2)); // {"name":"Tom","age":11}
+        console.log(Object.getOwnPropertySymbols(obj2)); // [Symbol()]
     </script>
 </body>
 </html>
